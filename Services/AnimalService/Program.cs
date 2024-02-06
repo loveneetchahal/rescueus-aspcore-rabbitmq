@@ -1,8 +1,6 @@
-﻿using AnimalService.Consumers;
-using AnimalService.Data;
+﻿using AnimalService.Data;
 using MassTransit;
-using Microsoft.EntityFrameworkCore;
-using Polly;
+using Microsoft.EntityFrameworkCore; 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<AnimalDbContext>(option =>
 {
-    option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
